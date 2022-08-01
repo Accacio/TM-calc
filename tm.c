@@ -41,11 +41,13 @@ typedef struct player_board
 
 void update_player_board(int NT,Player_board* board)
 {
-    board->resources.credits+=NT+board->production.credits;
-    board->resources.titanium += board->production.titanium;
-    board->resources.plants   += board->production.plants  ;
-    board->resources.energy   += board->production.energy  ;
-    board->resources.heat     += board->production.heat    ;
+    board->resources.heat     += board->resources.energy      ;
+    board->resources.energy    = 0                            ;
+    board->resources.credits  += NT+board->production.credits ;
+    board->resources.titanium += board->production.titanium   ;
+    board->resources.plants   += board->production.plants     ;
+    board->resources.energy   += board->production.energy     ;
+    board->resources.heat     += board->production.heat       ;
 }
 
 typedef struct player {
