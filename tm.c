@@ -41,14 +41,14 @@ print_board_production(Board_production board_production)
     printf("\t%2.2d\n",board_production.heat);
 }
 
-typedef struct player_board
+typedef struct board
 {
     Board_resources resources;
     Board_production production;
-} Player_board;
+} Board;
 
 
-void update_player_board(int NT,Player_board* board)
+void update_player_board(int NT,Board* board)
 {
     board->resources.heat     += board->resources.energy      ;
     board->resources.energy    = 0                            ;
@@ -61,13 +61,13 @@ void update_player_board(int NT,Player_board* board)
 
 typedef struct player {
     int NT;
-    Player_board board;
+    Board board;
 } Player;
 
 void
 print_player(Player player)
 {
-    Player_board b = player.board;
+    Board b = player.board;
     printf("NT:\t%2.2d\n",player.NT);
     printf("Credits: %2.2d +(%2.2d) ",b.resources.credits,b.production.credits);
     printf("| Steel:  %2.2d +(%2.2d) ",b.resources.steel,b.production.steel);
