@@ -4,7 +4,12 @@ obj=$(src:.c=.o)
 all: $(obj)
 
 %.o: %.c
-	gcc -Wall $< -o $@
+	@echo Compiling
+	@gcc -Wall $< -lm -o $@
+	@echo Done
 
 clean:
 	@rm -rf $(obj)
+
+run: $(obj)
+	./$(obj)
